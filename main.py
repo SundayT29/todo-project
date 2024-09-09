@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-import uvicorn  # This is the ASGI server to run FastAPI
+from database import Base, engine
+import models
 
 app = FastAPI(
     title='Todo App',
@@ -7,6 +8,9 @@ app = FastAPI(
     version='1.0.0'
 )
 
+Base.metadata.create_all(bind=engine)
+
 @app.get('/')
 async def index():
     return {'request': 'Hello World!'}
+
