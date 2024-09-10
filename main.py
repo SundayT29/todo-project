@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from database import Base, engine
-import models
+from routers import auth
 
 app = FastAPI(
     title='Todo App',
@@ -10,7 +10,8 @@ app = FastAPI(
 
 Base.metadata.create_all(bind=engine)
 
+app.include_router(auth.router)
+
 @app.get('/')
 async def index():
     return {'request': 'Hello World!'}
-
