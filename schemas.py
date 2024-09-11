@@ -5,4 +5,3 @@ class UserCreate(BaseModel):
     last_name: str
     username: str
     password: str
-

@@ -1,6 +1,6 @@
 import datetime
 from database import Base
-from sqlalchemy import UUID, Column, Integer, String, Date, DateTime, func
+from sqlalchemy import UUID, Column, Integer, String, DateTime, func
 
 # User
 class Users(Base):
