@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status
-from schemas import UserCreate
+from schemas import UserRequest
 from models import Users
 from passlib.context import CryptContext
 
@@ -12,8 +12,8 @@ router = APIRouter(
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 @router.post('/create_user', status_code=status.HTTP_200_OK)
-async def signup(request: UserCreate):
-    user = UserCreate(
+async def signup(request: UserRequest):
+    user = UserRequest(
         first_name=request.first_name,
         last_name= request.last_name,
         username=request.username,
