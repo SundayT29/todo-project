@@ -1,6 +1,8 @@
 import datetime
 from database import Base
 from sqlalchemy import UUID, Column, Integer, String, DateTime, func
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 # User
 class Users(Base):
@@ -11,5 +13,5 @@ class Users(Base):
     last_name: str = Column(String(20), nullable=False)
     username: str = Column(String(50), nullable=False, unique=True)
     password: str = Column(String, nullable=False)
-    uuid: str = Column(UUID, nullable=False, unique=True)
+    uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, nullable=False, unique=True)
     role: str = Column(String, nullable=False, server_default='user')
