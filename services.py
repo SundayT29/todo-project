@@ -34,5 +34,5 @@ async def create_token(id: int, email: str, role: str):
     encode = {'sub': email, 'id': id, 'role': role}
     expires = datetime.utcnow() + timedelta(minutes=TOKEN_EXPIRES_MINUTES)
     encode.update({'exp': expires})
-    token = jwt.encode(encode, SECRET_KEY, algorithms=ALGORITHM)
+    token = jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
     return token
